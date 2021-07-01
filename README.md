@@ -1,2 +1,2 @@
-# rusty-translation
-Translation operators for FMM type methods in Rust.
+# rusty-field
+Representation of fields and their translation operators.
