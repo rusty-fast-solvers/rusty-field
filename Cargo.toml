@@ -19,6 +19,8 @@ crate-type = ["lib", "cdylib"]
 num = "0.*"
 ndarray = { version = "0.*", features = ["rayon"] }
 ndarray-linalg = { version = "0.13", features = ["netlib-system"] }
+rusty-base = { version = "0.1", path = "../rusty-base" }
+rusty-green-kernel = { version = "0.1", path = "../rusty-green-kernel" }
 rand = "0.8"
 itertools = "0.10"
 rayon = "1.5"

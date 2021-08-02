@@ -1,26 +1,15 @@
-//! Traits for the translation of fields
+//! Traits for translation operators.
 
-pub trait FmmTranslation {
+use ndarray::Array1;
+use ndarray_linalg::Scalar;
 
-    // Map particles to a local expansion.
-    // # Arguments
-    // * `particles`: A (3, N) array of particles.
-    // * `indices`: Column indices of the particles to be added to the multipole expansion.
-    fn p2m(&mut self, index: usize);
+pub trait M2L {
+    type A: Scalar;
 
-    // Propagate a multipole expansion to the parent.
-    fn m2m(&mut self, index: usize);
+    // Implementation of an m2l operation.
+    //
+    // The method returns the coefficients of the field
+    // translated to the box with index `target_index`.
+    fn m2l(&self, target_index: usize) -> Array1<Self::A>;
 
-    // Update a local expansion from a multipole expansion.
-    fn m2l(&mut self, local: usize, other: usize);
-
-    // Update a local expansion from the parent
-    fn l2l(&mut self, index: usize);
-
-    // Evaluate a local expansion at particle locations.
-    fn l2p(&mut self, index: usize);
-
-    // Direct evaluation of particle interactions between two boxes.
-    fn p2p(&mut self, index: usize, other: usize);
 }
-
