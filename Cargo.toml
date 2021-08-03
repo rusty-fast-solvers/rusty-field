@@ -28,6 +28,7 @@ rand_distr = "0.4"
 lapack = "0.*"
 lax = "0.*"
 plotters = "0.*"
+vtkio = "0.6"
 
 [dev-dependencies]
 criterion = { version = "0.3", features = ["html_reports"] }

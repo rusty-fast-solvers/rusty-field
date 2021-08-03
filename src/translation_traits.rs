@@ -1,15 +1,11 @@
 //! Traits for translation operators.
 
-use ndarray::Array1;
+use ndarray::ArrayView2;
 use ndarray_linalg::Scalar;
 
-pub trait M2L {
+pub trait Operator {
     type A: Scalar;
 
-    // Implementation of an m2l operation.
-    //
-    // The method returns the coefficients of the field
-    // translated to the box with index `target_index`.
-    fn m2l(&self, target_index: usize) -> Array1<Self::A>;
+    fn apply(&self, vec: ArrayView2<Self::A>) -> ArrayView2<Self::A>;
 
 }

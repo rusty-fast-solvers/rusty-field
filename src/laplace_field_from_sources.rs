@@ -45,7 +45,11 @@ macro_rules! laplace_field_from_source_impl {
             /// index j.
             fn evaluate(&self, points: ArrayView2<$A>, eval_mode: EvalMode) -> Array3<$A> {
                 let evaluator = make_laplace_evaluator(self.sources.view(), points.view());
-                evaluator.evaluate(self.coefficients.view(), &eval_mode, ThreadingType::Serial)
+                evaluator.evaluate(
+                    self.coefficients.t(),
+                    &eval_mode,
+                    ThreadingType::Serial,
+                )
             }
 
             /// Return the coefficients that describe the field.
@@ -60,12 +64,12 @@ macro_rules! laplace_field_from_source_impl {
 
             /// Return the number of coefficient vectors.
             fn number_of_coefficient_vectors(&self) -> usize {
-                self.coefficients.len_of(Axis(0))
+                self.coefficients.len_of(Axis(1))
             }
 
             /// Return the required number of coefficients.
             fn coefficient_dimension(&self) -> usize {
-                self.coefficients.len_of(Axis(1))
+                self.coefficients.len_of(Axis(0))
             }
 
             /// Update the field coefficients.
