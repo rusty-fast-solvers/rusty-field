@@ -1,8 +1,17 @@
 //! Generation of sources for different geometries.
 
-use ndarray::{s, Array2, ArrayView, Axis};
+use ndarray::{s, Array2, ArrayView, ArrayView2, Axis};
 use num;
 use rusty_base::RealType;
+
+pub trait DiscretePotential {
+    type A: RealType;
+
+    fn potential_points<'a>() -> ArrayView2<'a, Self::A>;
+
+}
+
+
 
 pub trait CubeSources
 where
