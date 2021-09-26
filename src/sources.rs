@@ -8,10 +8,7 @@ pub trait DiscretePotential {
     type A: RealType;
 
     fn potential_points<'a>() -> ArrayView2<'a, Self::A>;
-
 }
-
-
 
 pub trait CubeSources
 where
@@ -114,7 +111,12 @@ macro_rules! impl_cube_sources {
 
                 points.slice_mut(s![0, start..end]).fill(length);
 
-                points + origin.into_shape((3, 1)).unwrap().broadcast((3, 6 * m)).unwrap()
+                points
+                    + origin
+                        .into_shape((3, 1))
+                        .unwrap()
+                        .broadcast((3, 6 * m))
+                        .unwrap()
             }
         }
     };

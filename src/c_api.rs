@@ -17,4 +17,3 @@ pub extern "C" fn cube_sources_f64(
     let tmp = f64::cube_sources(p, origin, length);
     sources.assign(&tmp);
 }
-

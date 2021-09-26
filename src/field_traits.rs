@@ -59,11 +59,3 @@ pub trait Field {
     // Set coefficients to the given coefficient vectors.
     fn set_coefficients(&mut self, coefficients: ArrayView2<Self::A>);
 }
-
-pub trait SourceTargetEvaluation {
-    type A: Scalar;
-
-    fn evaluate(&self, coefficients: ArrayView2<A>) -> Array2<>
-
-
-}
